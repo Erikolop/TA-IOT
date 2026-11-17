@@ -12,7 +12,7 @@ exports.get = async (req, res) => {
 
 exports.readings = async (req, res) => {
     const hours = Number(req.query.hours) || 24;
-    res.json(await this.readings.listByDevice(req.params.id, hours));
+    res.json(await reading.listByDevice(req.params.id, hours));
 };
 
 exports.update = async (req, res) => {
