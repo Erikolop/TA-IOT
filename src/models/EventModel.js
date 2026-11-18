@@ -13,7 +13,7 @@ exports.insert = (deviceId, e) =>
   db.query(
     `INSERT INTO watering_events
        (device_id, trigger, duration_s, moisture_before, moisture_after, started_at, ended_at)
-     VALUES ($1, $2, $3, $4, $5, now() - ($3 * interval '1 second'), now())`,
+     VALUES ($1, $2, $3, $4, $5, now() - ($3::int * interval '1 second'), now())`,
     [deviceId, e.trigger, e.duration_s, e.moisture_before, e.moisture_after]
   );
 
