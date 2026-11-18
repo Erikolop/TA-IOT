@@ -11,6 +11,6 @@ exports.create = async (req, res) => {
 exports.list = async (_req, res) => res.json(await events.list());
 
 exports.get = async (req, res) => {
-    const event = await events.findById(req.param.id);
+    const event = await events.findById(req.params.id);
     event ? res.json(event) : res.status(404).json({ error: 'Not found'});
 };
