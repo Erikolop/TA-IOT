@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const wrap = require('../utils/asyncHandler');
 const c = require('../controllers/DeviceController');
+const fleetAuth = require('../middleware/fleetAuth');
 
+router.get('/config/:hwId', fleetAuth, wrap(c.config));
 router.get('/', wrap(c.list));
 router.get('/new', wrap(c.listNew)); // keep above '/:id'
 router.get('/:id', wrap(c.get));
